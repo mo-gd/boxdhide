@@ -10,7 +10,7 @@ Copy-paste material for the developer dashboard.
 
 **Description:**
 
-> Browse Letterboxd without spoilers. Until you've marked a film as watched, BoxdHide hides:
+> Form your own opinion before anyone else's. Knowing a film's average rating, or what your friends gave it, shapes how you watch it. Until you've marked a film as watched, BoxdHide hides:
 >
 > • Ratings: histogram and average
 > • Your friends' ratings
@@ -47,4 +47,4 @@ Copy-paste material for the developer dashboard.
 
 **Data usage:** No data collected. Tick the three certifications (no selling, no unrelated use, no creditworthiness use).
 
-**Privacy policy URL:** the public URL of `PRIVACY.md` (e.g. on GitHub).
+**Privacy policy URL:** `https://<user>.github.io/<repo>/#privacy` (GitHub Pages, see README).

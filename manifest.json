@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "BoxdHide",
   "version": "1.0.0",
-  "description": "Hide Letterboxd ratings, reviews, synopsis and banner until you've watched the film. Not affiliated with Letterboxd.",
+  "description": "Form your own opinion: hides Letterboxd ratings and reviews until you've watched the film. Not affiliated with Letterboxd.",
   "minimum_chrome_version": "120",
   "permissions": ["storage"],
   "icons": {

@@ -1,6 +1,7 @@
 # BoxdHide
 
-Chrome extension that keeps Letterboxd spoiler-free until you have watched a film.
+Chrome extension that hides Letterboxd ratings and reviews until you have watched a film,
+so your opinion isn't shaped by anyone else's.
 
 Choose from the toolbar icon what stays hidden: ratings, friends' ratings, review ratings,
 reviews (blurred, click to reveal), and optionally the banner and synopsis.
@@ -21,6 +22,8 @@ stays hidden.
 
 `scripts/package.sh` builds `dist/boxdhide-<version>.zip` for upload. Listing text, privacy answers
 and images are in `store/`; the privacy policy is `PRIVACY.md`.
+
+The project page lives in `docs/`: enable GitHub Pages on the `main` branch, `/docs` folder.
 
 ## License
 
