@@ -1,17 +1,21 @@
+/* Letterboxd palette. */
 :root {
   --bg: #14181c;
+  --raised: #1c2228;
+  --line: #2c3440;
+  --rule: #456;
   --text: #d8e0e8;
-  --muted: #678;
-  --off: #2c3440;
+  --muted: #9ab;
+  --dim: #678;
   --on: #00c030;
+  --orange: #ff8000;
   color-scheme: dark;
   background: var(--bg);
 }
 
 body {
-  width: 240px;
+  width: 270px;
   margin: 0;
-  padding: 16px 18px 12px;
   background: var(--bg);
   color: var(--text);
   font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
@@ -22,18 +26,22 @@ body:not(.ready) * {
   transition: none !important;
 }
 
-.row {
+.header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 6px 0;
-  cursor: pointer;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--raised);
 }
 
-.title {
-  margin-bottom: 10px;
-  font-weight: 600;
+.header h1 {
+  flex: 1;
+  margin: 0;
   color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 fieldset {
@@ -48,18 +56,36 @@ fieldset:disabled {
   opacity: 0.35;
 }
 
+section {
+  padding: 16px 16px 2px;
+}
+
+/* Letterboxd section heading: small caps label over a rule. */
+h2 {
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  cursor: pointer;
+}
+
+.row + .row {
+  border-top: 1px solid var(--raised);
+}
+
 fieldset:disabled .row {
   cursor: default;
-}
-
-.caption {
-  margin: 0 0 2px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.group {
-  margin-top: 10px;
 }
 
 /* Switch drawn on the checkbox itself. */
@@ -71,9 +97,13 @@ input[role="switch"] {
   height: 14px;
   margin: 0;
   border-radius: 7px;
-  background: var(--off);
+  background: var(--line);
   cursor: inherit;
   transition: background 0.15s;
+}
+
+.header input[role="switch"] {
+  cursor: pointer;
 }
 
 input[role="switch"]::after {
@@ -102,19 +132,48 @@ input[role="switch"]:focus-visible {
   outline-offset: 2px;
 }
 
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--raised);
+}
+
+.footer a,
 #reset {
-  display: block;
-  margin: 10px 0 0 auto;
   padding: 0;
   border: 0;
   background: none;
-  color: var(--muted);
+  color: var(--dim);
   font: inherit;
   font-size: 11px;
+  text-decoration: none;
   cursor: pointer;
 }
 
+.footer a:hover,
+.footer a:focus-visible,
 #reset:hover,
 #reset:focus-visible {
-  color: var(--text);
+  color: #fff;
+}
+
+.footer .coffee {
+  margin-left: auto;
+  padding: 5px 9px;
+  border-radius: 3px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.footer .coffee:hover,
+.footer .coffee:focus-visible {
+  background: #e67300;
 }

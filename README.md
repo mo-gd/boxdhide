@@ -7,6 +7,8 @@ Choose from the toolbar icon what stays hidden: ratings, friends' ratings, revie
 reviews (blurred, click to reveal), and optionally the banner and synopsis.
 Everything comes back as soon as the film is marked as watched.
 
+[Website](https://mo-gd.github.io/boxdhide/) · [Buy me a coffee](https://buymeacoffee.com/moehau)
+
 ## Development
 
 Open `chrome://extensions`, enable **Developer mode**, click **Load unpacked** and select this folder.

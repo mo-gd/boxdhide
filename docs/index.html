@@ -13,7 +13,16 @@
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top"><img src="assets/icon.svg" alt="" width="20" height="20">BoxdHide</a>
+      <a class="brand" href="#top">
+        <svg class="logo" viewBox="0 0 128 128" aria-hidden="true">
+          <circle cx="64" cy="43" r="26" fill="#ff8000"/>
+          <circle cx="40" cy="85" r="26" fill="#00e054"/>
+          <circle cx="88" cy="85" r="26" fill="#40bcf4"/>
+          <path class="slash" d="M36 43 92 99" pathLength="100" stroke="#14181c" stroke-width="20" stroke-linecap="round"/>
+          <path class="slash" d="M36 43 92 99" pathLength="100" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        BoxdHide
+      </a>
       <nav class="nav-links">
         <a href="#why">Why</a>
         <a href="#demo">Demo</a>
@@ -32,6 +41,7 @@
       <div class="hero-actions">
         <a class="button -action" href="#install">Install</a>
         <a class="button js-repo" href="#" hidden>View source</a>
+        <a class="button -coffee" href="https://buymeacoffee.com/moehau" target="_blank" rel="noopener">Buy me a coffee</a>
       </div>
     </section>
 
@@ -116,16 +126,24 @@
         </article>
 
         <div class="popup">
-          <label class="popup-row popup-title">
+          <div class="popup-header">
+            <img src="assets/icon.svg" alt="" width="20" height="20">
             <span>BoxdHide</span>
-            <input type="checkbox" role="switch" data-key="enabled" checked>
-          </label>
+            <input type="checkbox" role="switch" data-key="enabled" checked aria-label="Enable BoxdHide">
+          </div>
           <fieldset class="js-settings">
-            <p class="popup-caption">Hide until watched</p>
-            <div class="js-features"></div>
-            <div class="js-options popup-group"></div>
+            <div class="popup-section">
+              <h4 class="popup-heading">Hide until watched</h4>
+              <div class="js-features"></div>
+            </div>
+            <div class="popup-section">
+              <h4 class="popup-heading">Options</h4>
+              <div class="js-options"></div>
+            </div>
           </fieldset>
-          <button type="button" class="popup-reset js-reset">Reset</button>
+          <div class="popup-footer">
+            <button type="button" class="popup-link js-reset">Reset</button>
+          </div>
           <template class="js-row">
             <label class="popup-row"><span></span><input type="checkbox" role="switch"></label>
           </template>
@@ -143,15 +161,16 @@
     </section>
 
     <section id="features" class="wrap section">
-      <h2 class="section-heading">What stays hidden</h2>
+      <h2 class="section-heading">What stays hidden <span>Everything is optional and configurable</span></h2>
       <ul class="features">
-        <li><h3>Ratings</h3><p>The histogram and average rating.</p></li>
-        <li><h3>Friends' ratings</h3><p>Stars under your friends' avatars.</p></li>
-        <li><h3>Review ratings</h3><p>Stars next to every review.</p></li>
-        <li><h3>Reviews</h3><p>Blurred. Click one if you really want to read it.</p></li>
-        <li><h3>Banner <em>optional</em></h3><p>The backdrop image at the top of the page.</p></li>
-        <li><h3>Synopsis <em>optional</em></h3><p>Tagline and description.</p></li>
+        <li><h3>Ratings <em>on by default</em></h3><p>The histogram and average rating.</p></li>
+        <li><h3>Friends' ratings <em>on by default</em></h3><p>Stars under your friends' avatars.</p></li>
+        <li><h3>Review ratings <em>on by default</em></h3><p>Stars next to every review.</p></li>
+        <li><h3>Reviews <em>on by default</em></h3><p>Blurred. Click one if you really want to read it.</p></li>
+        <li><h3>Banner <em>off by default</em></h3><p>The backdrop image at the top of the page.</p></li>
+        <li><h3>Synopsis <em>off by default</em></h3><p>Tagline and description.</p></li>
       </ul>
+      <p class="note">Turn each one on or off from the toolbar popup, or pause BoxdHide entirely.</p>
     </section>
 
     <section class="wrap section">
@@ -193,6 +212,7 @@
 
   <footer class="footer wrap">
     <p>BoxdHide is an independent project, not affiliated with Letterboxd. Released under the <a href="https://www.wtfpl.net/">WTFPL</a>.</p>
+    <a class="button -coffee" href="https://buymeacoffee.com/moehau" target="_blank" rel="noopener">Buy me a coffee</a>
   </footer>
 </body>
 </html>

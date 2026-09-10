@@ -10,18 +10,28 @@
   <script src="popup.js" defer></script>
 </head>
 <body>
-  <label class="row title">
-    <span>BoxdHide</span>
-    <input type="checkbox" role="switch" data-key="enabled">
-  </label>
+  <header class="header">
+    <img src="../../icons/logo.svg" alt="" width="22" height="22">
+    <h1>BoxdHide</h1>
+    <input type="checkbox" role="switch" data-key="enabled" aria-label="Enable BoxdHide">
+  </header>
 
   <fieldset id="settings">
-    <p class="caption">Hide until watched</p>
-    <div id="features"></div>
-    <div id="options" class="group"></div>
+    <section>
+      <h2>Hide until watched</h2>
+      <div id="features"></div>
+    </section>
+    <section>
+      <h2>Options</h2>
+      <div id="options"></div>
+    </section>
   </fieldset>
 
-  <button type="button" id="reset">Reset</button>
+  <footer class="footer">
+    <a href="https://mo-gd.github.io/boxdhide/" target="_blank" rel="noopener">Website</a>
+    <button type="button" id="reset">Reset</button>
+    <a class="coffee" href="https://buymeacoffee.com/moehau" target="_blank" rel="noopener">Buy me a coffee</a>
+  </footer>
 
   <template id="row-template">
     <label class="row">

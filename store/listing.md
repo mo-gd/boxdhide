@@ -16,9 +16,11 @@ Copy-paste material for the developer dashboard.
 > • Your friends' ratings
 > • Ratings on reviews
 > • Reviews (blurred, click one to read it)
-> • The banner and synopsis (optional)
+> • The banner and synopsis
 >
-> Everything comes back as soon as you mark the film as watched, with no reload. Choose what to hide from the toolbar icon.
+> Everything is optional: choose what to hide from the toolbar icon. It all comes back as soon as you mark the film as watched, with no reload.
+>
+> Website: https://mo-gd.github.io/boxdhide/
 >
 > No tracking, no data collection.
 >

@@ -78,6 +78,50 @@ h1, h2, h3, h4, p, ul, ol {
   text-decoration: none;
 }
 
+/* Logo loop: the dots pulse in turn, then the slash hides them and retracts. */
+.logo {
+  width: 26px;
+  height: 26px;
+}
+
+.logo circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: logo-dot 4s ease-in-out infinite;
+}
+
+.logo circle:nth-of-type(2) {
+  animation-delay: 0.12s;
+}
+
+.logo circle:nth-of-type(3) {
+  animation-delay: 0.24s;
+}
+
+.logo .slash {
+  stroke-dasharray: 100;
+  animation: logo-slash 4s ease-in-out infinite;
+}
+
+@keyframes logo-dot {
+  0%, 16%, 100% { transform: scale(1); }
+  8% { transform: scale(1.14); }
+}
+
+@keyframes logo-slash {
+  0%, 18% { stroke-dashoffset: 100; }
+  40%, 82% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -100; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo circle,
+  .logo .slash {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
 .nav-links {
   display: flex;
   gap: 22px;
@@ -143,6 +187,14 @@ h1, h2, h3, h4, p, ul, ol {
 
 .button.-action:hover {
   background: #009d1a;
+}
+
+.button.-coffee {
+  background: #ff8000;
+}
+
+.button.-coffee:hover {
+  background: #e67300;
 }
 
 /* Sections */
@@ -449,7 +501,7 @@ button.action:hover svg,
 .popup {
   position: sticky;
   top: 72px;
-  padding: 16px 18px 12px;
+  overflow: hidden;
   border: 1px solid #0b0d10;
   border-radius: 6px;
   background: var(--bg);
@@ -458,18 +510,45 @@ button.action:hover svg,
   line-height: 1.4;
 }
 
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--panel);
+  background: var(--surface);
+  color: #fff;
+  font-weight: 700;
+}
+
+.popup-header span {
+  flex: 1;
+}
+
+.popup-section {
+  padding: 14px 16px 2px;
+}
+
+.popup-heading {
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
 .popup-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 0;
+  padding: 7px 0;
   cursor: pointer;
 }
 
-.popup-title {
-  margin-bottom: 10px;
-  color: #fff;
-  font-weight: 600;
+.popup-row + .popup-row {
+  border-top: 1px solid var(--surface);
 }
 
 .popup fieldset {
@@ -486,16 +565,6 @@ button.action:hover svg,
 
 .popup fieldset:disabled .popup-row {
   cursor: default;
-}
-
-.popup-caption {
-  margin-bottom: 2px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.popup-group {
-  margin-top: 10px;
 }
 
 .popup input[role="switch"] {
@@ -537,9 +606,16 @@ button.action:hover svg,
   outline-offset: 2px;
 }
 
-.popup-reset {
-  display: block;
-  margin: 10px 0 0 auto;
+.popup-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  padding: 9px 16px;
+  border-top: 1px solid var(--panel);
+  background: var(--surface);
+}
+
+.popup-link {
   padding: 0;
   border: 0;
   background: none;
@@ -548,8 +624,8 @@ button.action:hover svg,
   cursor: pointer;
 }
 
-.popup-reset:hover {
-  color: var(--bright);
+.popup-link:hover {
+  color: #fff;
 }
 
 /* Features, steps, install */
@@ -581,6 +657,12 @@ button.action:hover svg,
 
 .features p,
 .steps p {
+  font-size: 14px;
+}
+
+.note {
+  margin-top: 24px;
+  color: var(--muted);
   font-size: 14px;
 }
 
@@ -628,6 +710,11 @@ code {
 }
 
 .footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   padding: 24px 0 40px;
   border-top: 1px solid var(--panel);
   color: var(--muted);
