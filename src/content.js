@@ -79,7 +79,10 @@
 
   /** Asks Letterboxd whether the current user has watched `uid`. */
   async function fetchIsWatched(uid) {
-    const response = await fetch(new URL(METADATA_URL, location.origin), {
+    // Firefox sends content-script requests as the extension; content.fetch sends them as the page.
+    const { content } = globalThis;
+    const pageFetch = typeof content?.fetch === 'function' ? content.fetch.bind(content) : fetch;
+    const response = await pageFetch(new URL(METADATA_URL, location.origin), {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

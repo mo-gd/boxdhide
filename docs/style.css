@@ -11,7 +11,17 @@
   --blue: #40bcf4;
   --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
   --serif: Georgia, "Times New Roman", serif;
+  --hand: "Caveat", "Bradley Hand", cursive;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   color-scheme: dark;
+}
+
+/* Subset of Caveat (SIL Open Font License, see assets/fonts/OFL.txt) for the hero stamp. */
+@font-face {
+  font-family: "Caveat";
+  src: url("assets/fonts/caveat.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
 }
 
 * {
@@ -78,13 +88,18 @@ h1, h2, h3, h4, p, ul, ol {
   text-decoration: none;
 }
 
-/* Logo loop: the dots pulse in turn, then the slash hides them and retracts. */
+/* Logo loop: the dots pulse in turn, then the slash cuts through and retracts. */
 .logo {
   width: 26px;
   height: 26px;
 }
 
+.logo .dots {
+  isolation: isolate;
+}
+
 .logo circle {
+  mix-blend-mode: screen;
   transform-box: fill-box;
   transform-origin: center;
   animation: logo-dot 4s ease-in-out infinite;
@@ -98,8 +113,9 @@ h1, h2, h3, h4, p, ul, ol {
   animation-delay: 0.24s;
 }
 
+/* The gap is longer than the path, and offsets go past its ends, so no round cap lingers. */
 .logo .slash {
-  stroke-dasharray: 100;
+  stroke-dasharray: 100 120;
   animation: logo-slash 4s ease-in-out infinite;
 }
 
@@ -109,9 +125,9 @@ h1, h2, h3, h4, p, ul, ol {
 }
 
 @keyframes logo-slash {
-  0%, 18% { stroke-dashoffset: 100; }
+  0%, 18% { stroke-dashoffset: 110; }
   40%, 82% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -100; }
+  100% { stroke-dashoffset: -110; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -143,7 +159,67 @@ h1, h2, h3, h4, p, ul, ol {
 /* Hero */
 
 .hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 40px;
   padding: 96px 0 72px;
+}
+
+/* Handwritten circular link to the author's Letterboxd profile. */
+.stamp {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 132px;
+  height: 132px;
+  margin-right: 24px;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.stamp:hover,
+.stamp:focus-visible {
+  color: var(--green);
+}
+
+.stamp svg:first-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: stamp-spin 24s linear infinite;
+}
+
+.stamp:hover svg:first-child {
+  animation-play-state: paused;
+}
+
+.stamp text {
+  fill: currentColor;
+  font: 500 20px var(--hand);
+}
+
+.stamp-arrow {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes stamp-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp svg:first-child {
+    animation: none;
+  }
 }
 
 .hero h1 {
@@ -504,7 +580,7 @@ button.action:hover svg,
   overflow: hidden;
   border: 1px solid #0b0d10;
   border-radius: 6px;
-  background: var(--bg);
+  background: var(--grain), var(--bg);
   color: var(--bright);
   font-size: 13px;
   line-height: 1.4;
@@ -515,8 +591,7 @@ button.action:hover svg,
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--panel);
-  background: var(--surface);
+  background: rgb(255 255 255 / 3%);
   color: #fff;
   font-weight: 700;
 }
@@ -567,20 +642,38 @@ button.action:hover svg,
   cursor: default;
 }
 
-.popup input[role="switch"] {
-  appearance: none;
+/* Switch: a transparent checkbox over a drawn track, as in the extension. */
+.popup .switch {
   position: relative;
   flex: none;
   width: 26px;
   height: 14px;
+}
+
+.popup .switch input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.popup fieldset:disabled .switch input {
+  cursor: default;
+}
+
+.popup .track {
+  position: absolute;
+  inset: 0;
   border-radius: 7px;
   background: var(--panel);
-  cursor: inherit;
   transition: background 0.15s;
 }
 
-.popup input[role="switch"]::after {
+.popup .track::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -592,16 +685,16 @@ button.action:hover svg,
   transition: transform 0.15s;
 }
 
-.popup input[role="switch"]:checked {
+.popup input:checked + .track {
   background: #00c030;
 }
 
-.popup input[role="switch"]:checked::after {
+.popup input:checked + .track::after {
   transform: translateX(12px);
   background: #fff;
 }
 
-.popup input[role="switch"]:focus-visible {
+.popup input:focus-visible + .track {
   outline: 1px solid var(--muted);
   outline-offset: 2px;
 }
@@ -611,8 +704,7 @@ button.action:hover svg,
   justify-content: flex-end;
   margin-top: 12px;
   padding: 9px 16px;
-  border-top: 1px solid var(--panel);
-  background: var(--surface);
+  background: rgb(255 255 255 / 3%);
 }
 
 .popup-link {
@@ -689,6 +781,10 @@ button.action:hover svg,
   padding-left: 18px;
 }
 
+.install-next {
+  margin-top: 20px;
+}
+
 .install li + li {
   margin-top: 4px;
 }
@@ -733,7 +829,16 @@ code {
   }
 
   .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
     padding: 56px 0 48px;
+  }
+
+  .stamp {
+    justify-self: end;
+    width: 104px;
+    height: 104px;
+    margin-right: 0;
   }
 
   .demo {

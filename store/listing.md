@@ -49,4 +49,13 @@ Copy-paste material for the developer dashboard.
 
 **Data usage:** No data collected. Tick the three certifications (no selling, no unrelated use, no creditworthiness use).
 
-**Privacy policy URL:** `https://<user>.github.io/<repo>/#privacy` (GitHub Pages, see README).
+**Privacy policy URL:** https://mo-gd.github.io/boxdhide/#privacy
+
+## Firefox Add-ons (AMO)
+
+Upload `dist/boxdhide-<version>-firefox.zip`. Reuse the name, summary, description and images above.
+
+- **Categories:** Other · **License:** Other (WTFPL, link to `LICENSE`)
+- **Data collection:** none (declared in the Firefox manifest).
+- **Source code:** not needed, nothing is minified or bundled.
+- **Privacy policy:** paste the text of `PRIVACY.md`.

@@ -13,7 +13,10 @@
   <header class="header">
     <img src="../../icons/logo.svg" alt="" width="22" height="22">
     <h1>BoxdHide</h1>
-    <input type="checkbox" role="switch" data-key="enabled" aria-label="Enable BoxdHide">
+    <span class="switch">
+      <input type="checkbox" role="switch" data-key="enabled" aria-label="Enable BoxdHide">
+      <span class="track"></span>
+    </span>
   </header>
 
   <fieldset id="settings">
@@ -36,7 +39,10 @@
   <template id="row-template">
     <label class="row">
       <span></span>
-      <input type="checkbox" role="switch">
+      <span class="switch">
+        <input type="checkbox" role="switch">
+        <span class="track"></span>
+      </span>
     </label>
   </template>
 </body>

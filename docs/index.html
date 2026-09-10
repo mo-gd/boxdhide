@@ -15,11 +15,18 @@
     <div class="wrap nav-inner">
       <a class="brand" href="#top">
         <svg class="logo" viewBox="0 0 128 128" aria-hidden="true">
-          <circle cx="64" cy="43" r="26" fill="#ff8000"/>
-          <circle cx="40" cy="85" r="26" fill="#00e054"/>
-          <circle cx="88" cy="85" r="26" fill="#40bcf4"/>
-          <path class="slash" d="M36 43 92 99" pathLength="100" stroke="#14181c" stroke-width="20" stroke-linecap="round"/>
-          <path class="slash" d="M36 43 92 99" pathLength="100" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <mask id="logo-cut">
+            <rect width="128" height="128" fill="#fff"/>
+            <path class="slash" d="M20 25.5 106 111.5" pathLength="100" stroke="#000" stroke-width="12" stroke-linecap="round"/>
+          </mask>
+          <g mask="url(#logo-cut)">
+            <g class="dots">
+              <circle cx="64" cy="47.5" r="24" fill="#ff8000"/>
+              <circle cx="45" cy="80.5" r="24" fill="#00e054"/>
+              <circle cx="83" cy="80.5" r="24" fill="#40bcf4"/>
+            </g>
+          </g>
+          <path class="slash" d="M32 37.5 94 99.5" pathLength="100" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
         </svg>
         BoxdHide
       </a>
@@ -36,6 +43,7 @@
 
   <main id="top">
     <section class="hero wrap">
+      <div class="hero-text">
       <h1>Your opinion<br>comes first.</h1>
       <p>Knowing a film sits at 4.5 changes how you watch it. BoxdHide hides Letterboxd ratings, your friends' stars and reviews until you've marked the film as watched, so the first take you form is your own.</p>
       <div class="hero-actions">
@@ -43,6 +51,15 @@
         <a class="button js-repo" href="#" hidden>View source</a>
         <a class="button -coffee" href="https://buymeacoffee.com/moehau" target="_blank" rel="noopener">Buy me a coffee</a>
       </div>
+      </div>
+
+      <a class="stamp" href="https://letterboxd.com/mohgd/" target="_blank" rel="noopener" aria-label="My Letterboxd">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <path id="stamp-circle" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0" fill="none"/>
+          <text><textPath href="#stamp-circle" textLength="274" lengthAdjust="spacing">My Letterboxd · My Letterboxd ·</textPath></text>
+        </svg>
+        <svg class="stamp-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
     </section>
 
     <section id="demo" class="wrap section">
@@ -129,7 +146,10 @@
           <div class="popup-header">
             <img src="assets/icon.svg" alt="" width="20" height="20">
             <span>BoxdHide</span>
-            <input type="checkbox" role="switch" data-key="enabled" checked aria-label="Enable BoxdHide">
+            <span class="switch">
+              <input type="checkbox" role="switch" data-key="enabled" checked aria-label="Enable BoxdHide">
+              <span class="track"></span>
+            </span>
           </div>
           <fieldset class="js-settings">
             <div class="popup-section">
@@ -145,7 +165,7 @@
             <button type="button" class="popup-link js-reset">Reset</button>
           </div>
           <template class="js-row">
-            <label class="popup-row"><span></span><input type="checkbox" role="switch"></label>
+            <label class="popup-row"><span></span><span class="switch"><input type="checkbox" role="switch"><span class="track"></span></span></label>
           </template>
         </div>
       </div>
@@ -187,6 +207,8 @@
       <div class="install">
         <div>
           <h3>Chrome Web Store</h3>
+          <p>Coming soon.</p>
+          <h3 class="install-next">Firefox Add-ons</h3>
           <p>Coming soon.</p>
         </div>
         <div>

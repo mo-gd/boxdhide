@@ -11,7 +11,10 @@ Everything comes back as soon as the film is marked as watched.
 
 ## Development
 
-Open `chrome://extensions`, enable **Developer mode**, click **Load unpacked** and select this folder.
+Chrome: open `chrome://extensions`, enable **Developer mode**, click **Load unpacked** and select this folder.
+
+Firefox: run `scripts/package.sh`, open `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on**
+and select `dist/boxdhide-<version>-firefox.zip`.
 
 ## How it works
 
@@ -22,7 +25,7 @@ stays hidden.
 
 ## Publishing
 
-`scripts/package.sh` builds `dist/boxdhide-<version>.zip` for upload. Listing text, privacy answers
+`scripts/package.sh` builds `dist/boxdhide-<version>-chrome.zip` and `-firefox.zip` for upload. Listing text, privacy answers
 and images are in `store/`; the privacy policy is `PRIVACY.md`.
 
 The project page lives in `docs/`: enable GitHub Pages on the `main` branch, `/docs` folder.

@@ -1,7 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <circle cx="64" cy="43" r="26" fill="#ff8000"/>
-  <circle cx="40" cy="85" r="26" fill="#00e054"/>
-  <circle cx="88" cy="85" r="26" fill="#40bcf4"/>
-  <path d="M36 43 92 99" stroke="#14181c" stroke-width="20" stroke-linecap="round"/>
-  <path d="M36 43 92 99" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <mask id="cut">
+    <rect width="128" height="128" fill="#fff"/>
+    <path d="M20 25.5 106 111.5" stroke="#000" stroke-width="12" stroke-linecap="round"/>
+  </mask>
+  <g mask="url(#cut)">
+    <g style="isolation:isolate">
+      <circle cx="64" cy="47.5" r="24" fill="#ff8000" style="mix-blend-mode:screen"/>
+      <circle cx="45" cy="80.5" r="24" fill="#00e054" style="mix-blend-mode:screen"/>
+      <circle cx="83" cy="80.5" r="24" fill="#40bcf4" style="mix-blend-mode:screen"/>
+    </g>
+  </g>
+  <path d="M32 37.5 94 99.5" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
 </svg>
