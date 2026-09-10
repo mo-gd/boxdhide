@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Dark canvas from the first frame, before the stylesheet loads. -->
+  <meta name="color-scheme" content="dark">
+  <title>BoxdHide</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="../settings.js" defer></script>
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <label class="row title">
+    <span>BoxdHide</span>
+    <input type="checkbox" role="switch" data-key="enabled">
+  </label>
+
+  <fieldset id="settings">
+    <p class="caption">Hide until watched</p>
+    <div id="features"></div>
+    <div id="options" class="group"></div>
+  </fieldset>
+
+  <button type="button" id="reset">Reset</button>
+
+  <template id="row-template">
+    <label class="row">
+      <span></span>
+      <input type="checkbox" role="switch">
+    </label>
+  </template>
+</body>
+</html>

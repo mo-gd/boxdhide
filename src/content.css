@@ -1,0 +1,67 @@
+/*
+ * Rules are gated on attributes that content.js sets on <html>:
+ *   data-boxdhide="unlocked"      the film is watched, nothing is hidden
+ *   data-boxdhide-show="a b ..."  features the user chose not to hide
+ *   data-boxdhide-reveal          blurred reviews can be clicked open
+ * Without them everything is hidden, so the page is protected from first
+ * paint and stays protected if the script fails.
+ */
+
+:root:not([data-boxdhide="unlocked"]) {
+  /* Community ratings: histogram and averages. The header (title, fans) stays. */
+  &:not([data-boxdhide-show~="ratings"]) {
+    .ratings-histogram-chart > :not(.section-header),
+    :is(.average-rating, .display-rating) {
+      display: none !important;
+    }
+
+    .ratings-histogram-chart::after {
+      content: "Ratings hidden until watched";
+    }
+  }
+
+  /* Individual ratings. visibility keeps the layout stable. */
+  &:not([data-boxdhide-show~="friendRatings"]) .activity-from-friends,
+  &:not([data-boxdhide-show~="reviewRatings"]) :is(.film-reviews, .viewing-list, .production-viewing, .js-review, .film-detail) {
+    :is(.rating, .inline-rating, [class*="rated-"], .glyph.-rating) {
+      visibility: hidden !important;
+    }
+  }
+
+  /* Review text. Keep in sync with REVIEW_TEXT in content.js. */
+  &:not([data-boxdhide-show~="reviews"]) :is(.js-review, .review, .production-viewing, .film-detail) .body-text:not(.boxdhide-revealed) {
+    filter: blur(6px);
+    user-select: none;
+  }
+
+  &[data-boxdhide-reveal]:not([data-boxdhide-show~="reviews"]) :is(.js-review, .review, .production-viewing, .film-detail) .body-text:not(.boxdhide-revealed) {
+    cursor: pointer;
+  }
+
+  &:not([data-boxdhide-show~="backdrop"]) .backdrop-container {
+    visibility: hidden !important;
+  }
+
+  &:not([data-boxdhide-show~="synopsis"]) {
+    .production-synopsis > * {
+      display: none !important;
+    }
+
+    .production-synopsis::after {
+      content: "Synopsis hidden until watched";
+    }
+  }
+}
+
+/* Placeholders only render when a rule above gives them content. */
+.ratings-histogram-chart::after,
+.production-synopsis::after {
+  display: block;
+  padding: 0.75rem 0;
+  font-size: 0.8125rem;
+  color: #678;
+}
+
+.body-text {
+  transition: filter 0.2s ease;
+}

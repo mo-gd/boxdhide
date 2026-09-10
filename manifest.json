@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "BoxdHide",
+  "version": "1.0.0",
+  "description": "Hide Letterboxd ratings, reviews, synopsis and banner until you've watched the film. Not affiliated with Letterboxd.",
+  "minimum_chrome_version": "120",
+  "permissions": ["storage"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "BoxdHide",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://letterboxd.com/film/*", "https://letterboxd.com/*/film/*"],
+      "css": ["src/content.css"],
+      "js": ["src/settings.js", "src/content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

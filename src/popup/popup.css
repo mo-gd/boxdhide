@@ -1,0 +1,120 @@
+:root {
+  --bg: #14181c;
+  --text: #d8e0e8;
+  --muted: #678;
+  --off: #2c3440;
+  --on: #00c030;
+  color-scheme: dark;
+  background: var(--bg);
+}
+
+body {
+  width: 240px;
+  margin: 0;
+  padding: 16px 18px 12px;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+}
+
+/* No animation while the initial state is being filled in. */
+body:not(.ready) * {
+  transition: none !important;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #fff;
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  transition: opacity 0.15s;
+}
+
+fieldset:disabled {
+  opacity: 0.35;
+}
+
+fieldset:disabled .row {
+  cursor: default;
+}
+
+.caption {
+  margin: 0 0 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.group {
+  margin-top: 10px;
+}
+
+/* Switch drawn on the checkbox itself. */
+input[role="switch"] {
+  appearance: none;
+  position: relative;
+  flex: none;
+  width: 26px;
+  height: 14px;
+  margin: 0;
+  border-radius: 7px;
+  background: var(--off);
+  cursor: inherit;
+  transition: background 0.15s;
+}
+
+input[role="switch"]::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text);
+  transition: transform 0.15s;
+}
+
+input[role="switch"]:checked {
+  background: var(--on);
+}
+
+input[role="switch"]:checked::after {
+  transform: translateX(12px);
+  background: #fff;
+}
+
+input[role="switch"]:focus-visible {
+  outline: 1px solid var(--muted);
+  outline-offset: 2px;
+}
+
+#reset {
+  display: block;
+  margin: 10px 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+#reset:hover,
+#reset:focus-visible {
+  color: var(--text);
+}

@@ -1,0 +1,27 @@
+# BoxdHide
+
+Chrome extension that keeps Letterboxd spoiler-free until you have watched a film.
+
+Choose from the toolbar icon what stays hidden: ratings, friends' ratings, review ratings,
+reviews (blurred, click to reveal), and optionally the banner and synopsis.
+Everything comes back as soon as the film is marked as watched.
+
+## Development
+
+Open `chrome://extensions`, enable **Developer mode**, click **Load unpacked** and select this folder.
+
+## How it works
+
+`src/content.css` hides everything from first paint. `src/content.js` narrows that down to your
+settings (`src/settings.js`), then asks Letterboxd's `/ajax/letterboxd-metadata/` endpoint whether
+you watched the film. The sidebar *Watched* button is a live fallback. If anything fails, the page
+stays hidden.
+
+## Publishing
+
+`scripts/package.sh` builds `dist/boxdhide-<version>.zip` for upload. Listing text, privacy answers
+and images are in `store/`; the privacy policy is `PRIVACY.md`.
+
+## License
+
+[WTFPL](LICENSE). Not affiliated with Letterboxd.
