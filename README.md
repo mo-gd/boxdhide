@@ -33,3 +33,7 @@ The project page lives in `docs/`: enable GitHub Pages on the `main` branch, `/d
 ## License
 
 [WTFPL](LICENSE). Not affiliated with Letterboxd.
+
+## AI
+
+This project is vibecoded, the only line that was handwritten is this one. Feel free to contribute, the main thing is to keep the structure simple.
