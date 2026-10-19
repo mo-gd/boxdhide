@@ -178,11 +178,30 @@ input:focus-visible + .track {
   align-items: center;
   gap: 5px;
   margin-left: auto;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 3px;
+  background: #5865f2;
   color: #fff;
-  font-size: 10px;
+  font: inherit;
+  font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
-  user-select: all;
+  cursor: pointer;
+}
+
+.footer .discord:hover,
+.footer .discord:focus-visible {
+  background: #4752c4;
+}
+
+.footer .discord.is-copied {
+  background: var(--on);
+}
+
+.discord-logo {
+  width: 14px;
+  height: 14px;
 }
 
 .flag-fr {

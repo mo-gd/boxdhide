@@ -78,6 +78,24 @@
 
   render();
 
+  // Copy the Discord username on click.
+  for (const button of document.querySelectorAll('.js-discord')) {
+    const text = button.querySelector('.discord-text');
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.handle);
+      } catch {
+        return;
+      }
+      text.textContent = 'Copied!';
+      button.classList.add('is-copied');
+      setTimeout(() => {
+        text.textContent = button.dataset.handle;
+        button.classList.remove('is-copied');
+      }, 1500);
+    });
+  }
+
   // On GitHub Pages (<user>.github.io/<repo>/), link to the matching repository.
   const user = location.hostname.match(/^([\w-]+)\.github\.io$/)?.[1];
   const repo = location.pathname.split('/')[1];

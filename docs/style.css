@@ -269,11 +269,29 @@ h1, h2, h3, h4, p, ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 0;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 3px;
+  background: #5865f2;
   color: #fff;
-  font-weight: 700;
+  font: 700 14px var(--sans);
   white-space: nowrap;
-  user-select: all;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.discord:hover,
+.discord:focus-visible {
+  background: #4752c4;
+}
+
+.discord.is-copied {
+  background: var(--action);
+}
+
+.discord-logo {
+  width: 18px;
+  height: 18px;
 }
 
 .flag-fr {
