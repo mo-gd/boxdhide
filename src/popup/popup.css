@@ -148,7 +148,7 @@ input:focus-visible + .track {
 .footer {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   margin-top: 14px;
   padding: 10px 16px;
   background: var(--raised);
@@ -173,19 +173,23 @@ input:focus-visible + .track {
   color: #fff;
 }
 
-.footer .coffee {
+.footer .discord {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   margin-left: auto;
-  padding: 5px 9px;
-  border-radius: 3px;
-  background: var(--orange);
   color: #fff;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: all;
 }
 
-.footer .coffee:hover,
-.footer .coffee:focus-visible {
-  background: #e67300;
+.flag-fr {
+  display: inline-block;
+  flex: none;
+  width: 15px;
+  height: 10px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #0055a4 33.33%, #fff 33.33% 66.66%, #ef4135 66.66%);
 }
