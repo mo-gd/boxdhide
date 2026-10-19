@@ -37,6 +37,24 @@
     fill(await load());
   });
 
+  // Copy the Discord username on click.
+  for (const button of document.querySelectorAll('.js-discord')) {
+    const text = button.querySelector('.discord-text');
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.handle);
+      } catch {
+        return;
+      }
+      text.textContent = 'Copied!';
+      button.classList.add('is-copied');
+      setTimeout(() => {
+        text.textContent = button.dataset.handle;
+        button.classList.remove('is-copied');
+      }, 1500);
+    });
+  }
+
   fill(await load());
   requestAnimationFrame(() => document.body.classList.add('ready'));
 })();
